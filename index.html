@@ -225,6 +225,14 @@ async function refreshFromSheets() {
 }
 
 function applyData(data) {
+  if (!data || !data.kpi) return;
+  // אל תחליף נתונים טובים בנתונים גרועים יותר
+  const newTotal = (data.kpi && data.kpi.total) || 0;
+  const curTotal = (window.KPI && window.KPI.total) || 0;
+  if (newTotal < curTotal && newTotal < 50) {
+    console.log('Skipping update — new data (' + newTotal + ') worse than current (' + curTotal + ')');
+    return;
+  }
   window.KPI       = data.kpi       || {};
   window.ALL_SUPS  = data.all_sups  || [];
   window.SUP_CASES = data.sup_cases || {};
