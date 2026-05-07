@@ -99,6 +99,33 @@ table.mt tr:hover td{background:#f9fafb;}
 table.mt tr:last-child td{border-bottom:none;}
 .bc{display:inline-block;width:30px;height:4px;border-radius:2px;vertical-align:middle;margin-left:4px;}
 @media(max-width:900px){.kpi-grid,.sup10,.asg{grid-template-columns:repeat(2,1fr);}.bot{grid-template-columns:1fr;}}
+@media(max-width:600px){
+  .nav{padding:0 12px;gap:8px;height:52px;}
+  .nav-title{font-size:13px;}.nav-sub{display:none;}
+  .nav img{height:30px;}
+  .nav-live{font-size:10px;}
+  .tabs{padding:0 6px;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  .tab{padding:10px 12px;font-size:12px;white-space:nowrap;}
+  .page{padding:12px;}
+  .kpi-grid{grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;}
+  .kc{padding:11px 10px;}
+  .kv{font-size:20px;}
+  .kl{font-size:10px;}.ksub{font-size:10px;}
+  .sup10{grid-template-columns:1fr 1fr;gap:8px;}
+  .s10c{padding:10px;}.s10name{font-size:11px;}
+  .asg{grid-template-columns:1fr 1fr;gap:8px;}
+  .sbname{font-size:11px;}.sbv{font-size:14px;}
+  .bot{grid-template-columns:1fr;}
+  .wgrid{grid-template-columns:1fr 1fr;}
+  .wval{font-size:18px;}
+  .alert{font-size:11px;padding:8px 12px;flex-wrap:wrap;}
+  table.mt{font-size:11px;}
+  table.mt th,table.mt td{padding:5px 4px;}
+  .fb{gap:6px;}.srch{width:120px;font-size:11px;}
+  .chip{font-size:10px;padding:3px 8px;}
+  .sec{font-size:10px;}
+  .card-title{font-size:12px;}
+}
 </style>
 </head>
 <body>
@@ -249,7 +276,8 @@ function renderAll() {
   const ALL_CASES = window.ALL_CASES || [];
   const MAX_OLD   = window.MAX_OLD   || 65;
 
-  document.getElementById('navDate').textContent = window.LAST_UPDATED || '';
+  const upd = window.LAST_UPDATED || '';
+  document.getElementById('navDate').textContent = upd ? 'עדכון אחרון: ' + upd : '';
   document.getElementById('k-total').textContent  = KPI.total    || 0;
   document.getElementById('k-sup').textContent    = KPI.for_sup  || 0;
   document.getElementById('k-sup-pct').textContent= KPI.total ? Math.round((KPI.for_sup||0)/KPI.total*100)+'% מהסה"כ' : '';
